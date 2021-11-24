@@ -46,7 +46,7 @@ public class TypeUtilsTest {
     public void min() {
         int[] arr = getArrayFrom(2, 3, -2, 5, 6);
 
-        float min = typeUtils.max(arr);
+        float min = typeUtils.min(arr);
 
         assertEquals(-2, (int) min);
     }
@@ -82,6 +82,7 @@ public class TypeUtilsTest {
             fail("Divide on zero not allowed");
         } catch (ArithmeticException e) { }
         assertEquals("2", typeUtils.div("4", "2"));
+        assertEquals("0", typeUtils.div("0", "2"));
         assertEquals("1", typeUtils.div("2", "2"));
         assertEquals("-1", typeUtils.div("-2", "2"));
     }
