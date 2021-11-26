@@ -2,7 +2,7 @@ package com.andrew.types;
 
 public class TypeUtilsImpl implements TypeUtils {
     public int[] sort(int[] array) {
-        int[] backArray = array;
+        int[] backArray = array.clone();
 
         for (int i = array.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
@@ -82,6 +82,7 @@ public class TypeUtilsImpl implements TypeUtils {
         if (val2 != 0) {
             return String.valueOf(val1 / val2);
         }
-        return "Divide on zero not allowed";
+        throw new ArithmeticException();
+
     }
 }

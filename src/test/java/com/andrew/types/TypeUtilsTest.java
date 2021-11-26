@@ -21,7 +21,7 @@ public class TypeUtilsTest {
         assertArrayEquals(arr, clone);
 
         int[] expArr = getArrayFrom(-2, 0, 1, 1, 2, 4, 5, 6, 7, 10, 11);
-        assertEquals(expArr, sortedArr);
+        assertArrayEquals(expArr, sortedArr);
     }
 
     @Test
