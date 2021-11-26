@@ -1,14 +1,30 @@
 package com.andrew.strings;
 
-public class StringUtilsImpl implements StringUtils{
+import java.nio.charset.Charset;
+
+public class StringUtilsImpl implements StringUtils {
     @Override
     public int charCount(String str, char letter) {
-        return 0;
+        int count = -1;
+        char[] arrayStr = str.toCharArray();
+
+        for (int i = 0; i < arrayStr.length; i++) {
+            if (arrayStr[i] == letter)
+                count++;
+        }
+        return count;
     }
 
     @Override
     public String reverse(String str) {
-        return null;
+       char [] arrayStr = str.toCharArray();
+        for (int i = 0; i < arrayStr.length/2; i++) {
+            char letter = arrayStr[i];
+            arrayStr[i] = arrayStr[arrayStr.length-i-1];
+            arrayStr[arrayStr.length-i-1] = letter;
+        }
+        String string = new String(arrayStr);
+        return string;
     }
 
     @Override
