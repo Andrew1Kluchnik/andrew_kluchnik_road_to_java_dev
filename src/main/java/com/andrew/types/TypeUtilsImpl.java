@@ -82,7 +82,7 @@ public class TypeUtilsImpl implements TypeUtils {
         if (val2 != 0) {
             return String.valueOf(val1 / val2);
         }
-        throw new ArithmeticException();
+        throw new ArithmeticException("You can't to divide by zero!");
 
     }
 }
