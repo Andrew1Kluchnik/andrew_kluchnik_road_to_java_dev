@@ -9,5 +9,8 @@
         <module name="andrew_kluchnik_road_to_java_dev" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="wrapper" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
