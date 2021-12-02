@@ -14,7 +14,7 @@ public class StringUtilsTest {
         assertEquals(2, stringUtils.charCount("abca", 'a'));
         assertEquals(-1, stringUtils.charCount("abc2", '1'));
         assertEquals(-1, stringUtils.charCount("", 'a'));
-        assertEquals(-1, stringUtils.charCount("a", 'a'));
+        assertEquals(1, stringUtils.charCount("a", 'a'));
     }
 
     @Test

@@ -5,12 +5,15 @@ import java.util.ArrayList;
 public class StringUtilsImpl implements StringUtils {
     @Override
     public int charCount(String str, char letter) {
-        int count = -1;
+        int count = 0;
         char[] arrayStr = str.toCharArray();
 
         for (int i = 0; i < arrayStr.length; i++) {
             if (arrayStr[i] == letter)
                 count++;
+        }
+        if (count == 0) {
+            return -1;
         }
         return count;
     }
@@ -30,50 +33,54 @@ public class StringUtilsImpl implements StringUtils {
     @Override
     public StringBuilder alphabet() {
         int count = 0;
-        StringBuilder sb = new StringBuilder();
+        StringBuilder result = new StringBuilder();
         for (char i = 'a'; i <= 'z'; i++) {
-            if (count % 2 == 0) {
-                sb.append(Character.toUpperCase(i));
+            if (count % 2 != 0) {
+                result.append(Character.toUpperCase(i));
                 count++;
             } else {
-                sb.append(i);
+                result.append(i);
                 count++;
             }
         }
-        return sb;
+        return result;
     }
 
     @Override
     public String toCamelCase(String str) {
-        str = str.trim().replaceAll(" +", " ").replaceAll(",", "");
-        char[] chars = str.toCharArray();
-        String result = "";
-        for (int i = 0; i < chars.length; i++) {
-            if (i == 0 || Character.toString(chars[i - 1]).equals(" ")) {
-                result += Character.toUpperCase(chars[i]);
-            } else result += Character.toLowerCase(chars[i]);
+        if (str != null) {
+            str = str.trim().replaceAll(" +", " ").replaceAll(",", "");
+            char[] chars = str.toCharArray();
+            String result = "";
+            for (int i = 0; i < chars.length; i++) {
+                if (i == 0 || Character.toString(chars[i - 1]).equals(" ")) {
+                    result += Character.toUpperCase(chars[i]);
+                } else result += Character.toLowerCase(chars[i]);
+            }
+            result = result.replaceAll(" ", "");
+            return result;
         }
-        result = result.replaceAll(" ","");
-
-        return result;
+        return "";
 
     }
 
     @Override
     public String fromCamelCase(String camelStr) {
-        char[] arrayOfString = camelStr.toCharArray();
-        String result = "";
-        ArrayList arrayList = new ArrayList();
-        for (int i = 0; i < arrayOfString.length; i++) {
-            if (Character.isUpperCase(arrayOfString[i]) && i > 1) {
-                result += " ";
-                result += Character.toLowerCase(arrayOfString[i]);
-            } else {
-                result += arrayOfString[i];
+        if (camelStr != null) {
+            char[] arrayOfString = camelStr.toCharArray();
+            String result = "";
+            for (int i = 0; i < arrayOfString.length; i++) {
+                if (Character.isUpperCase(arrayOfString[i]) && i > 1) {
+                    result += " ";
+                    result += Character.toLowerCase(arrayOfString[i]);
+                } else {
+                    result += arrayOfString[i];
+                }
             }
+            return result;
         }
 
-        return result;
+        return "";
     }
 
     @Override
